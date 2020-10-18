@@ -12,7 +12,7 @@ class PasswordField extends StatefulWidget {
       this.color,
       this.controller,
       this.hasFloatingPlaceholder = false,
-      this.hintText,
+      this.hintText = 'Enter the hint',
       this.hintStyle,
       this.inputStyle,
       this.floatingText,
@@ -184,8 +184,7 @@ class PasswordFieldState extends State<PasswordField> {
                   errorStyle: widget.errorStyle,
                   enabledBorder: widget.border,
                   focusedBorder: widget.focusedBorder,
-                  hintText:
-                      widget.hasFloatingPlaceholder ? null : widget.hintText,
+                  hintText: widget.hintText,
                   hintStyle: widget.hintStyle ?? widget.inputStyle,
                   counterText: '',
                   focusedErrorBorder: widget.errorFocusedBorder,
