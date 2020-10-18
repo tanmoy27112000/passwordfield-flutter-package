@@ -5,31 +5,32 @@ import 'package:flutter/material.dart';
 import 'package:passwordfield/password_bloc.dart';
 
 class PasswordField extends StatefulWidget {
-  const PasswordField(
-      {this.autoFocus = false,
-      this.border,
-      this.focusedBorder,
-      this.color,
-      this.controller,
-      this.hasFloatingPlaceholder = false,
-      this.hintText = 'Enter the hint',
-      this.hintStyle,
-      this.inputStyle,
-      this.floatingText,
-      this.maxLength,
-      this.errorMaxLines,
-      this.onSubmit,
-      this.backgroundColor,
-      this.backgroundBorderRadius,
-      this.textPadding,
-      this.errorStyle,
-      @deprecated this.onChanged,
-      this.errorFocusedBorder,
-      this.errorMessage,
-      this.suffixIcon,
-      this.pattern,
-      this.suffixIconEnabled = true})
-      : assert((backgroundColor == null && backgroundBorderRadius == null) ||
+  const PasswordField({
+    this.autoFocus = false,
+    this.border,
+    this.focusedBorder,
+    this.color,
+    this.controller,
+    this.hasFloatingPlaceholder = false,
+    this.hintText = 'Enter the hint',
+    this.hintStyle,
+    this.inputStyle,
+    this.floatingText,
+    this.maxLength,
+    this.errorMaxLines,
+    this.onSubmit,
+    this.backgroundColor,
+    this.backgroundBorderRadius,
+    this.textPadding,
+    this.errorStyle,
+    @deprecated this.onChanged,
+    this.errorFocusedBorder,
+    this.errorMessage,
+    this.suffixIcon,
+    this.pattern,
+    this.suffixIconEnabled = true,
+    this.suffixFunction,
+  }) : assert((backgroundColor == null && backgroundBorderRadius == null) ||
             (backgroundColor != null && backgroundBorderRadius != null));
   // assert((hasFloatingPlaceholder == true && hintText == null) ||
   //     (hasFloatingPlaceholder == false && hintText != null));
@@ -61,6 +62,9 @@ class PasswordField extends StatefulWidget {
 
   /// A controller for an editable passwordfield.
   final TextEditingController controller;
+
+  /// to set a onTap method to the suffix button
+  final Function suffixFunction;
 
   /**
    * RegEx pattern for the input password
@@ -203,8 +207,8 @@ class PasswordFieldState extends State<PasswordField> {
                       ? GestureDetector(
                           child:
                               widget.suffixIcon ?? Icon(Icons.remove_red_eye),
-                          onTapDown: inContact,
-                          onTapUp: outContact,
+                          onTapDown: widget.suffixFunction ?? inContact,
+                          onTapUp: widget.suffixFunction ?? outContact,
                         )
                       : null),
               onSubmitted: widget.onSubmit,
