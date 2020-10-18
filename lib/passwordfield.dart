@@ -189,7 +189,7 @@ class PasswordFieldState extends State<PasswordField> {
                   counterText: '',
                   focusedErrorBorder: widget.errorFocusedBorder,
                   floatingLabelBehavior: widget.hasFloatingPlaceholder
-                      ? FloatingLabelBehavior.auto
+                      ? FloatingLabelBehavior.always
                       : FloatingLabelBehavior.never,
                   labelText: widget.hasFloatingPlaceholder
                       ? widget.floatingText ?? 'Password'
