@@ -176,7 +176,7 @@ class PasswordFieldState extends State<PasswordField> {
               decoration: InputDecoration(
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16.0,
-                    vertical: 8.0,
+                    vertical: 16.0,
                   ),
                   border: widget.backgroundColor != null
                       ? InputBorder.none
