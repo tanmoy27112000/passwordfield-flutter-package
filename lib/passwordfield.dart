@@ -174,7 +174,10 @@ class PasswordFieldState extends State<PasswordField> {
               obscureText: obscureText,
               autofocus: widget.autoFocus,
               decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                    vertical: 8.0,
+                  ),
                   border: widget.backgroundColor != null
                       ? InputBorder.none
                       : widget.border,
