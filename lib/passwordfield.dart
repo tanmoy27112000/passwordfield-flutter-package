@@ -30,6 +30,7 @@ class PasswordField extends StatefulWidget {
     this.pattern,
     this.suffixIconEnabled = true,
     this.suffixFunction,
+    this.isObscured = true,
   }) : assert((backgroundColor == null && backgroundBorderRadius == null) ||
             (backgroundColor != null && backgroundBorderRadius != null));
   // assert((hasFloatingPlaceholder == true && hintText == null) ||
@@ -65,6 +66,9 @@ class PasswordField extends StatefulWidget {
 
   /// to set a onTap method to the suffix button
   final Function suffixFunction;
+
+  /// to set obscurity to the text
+  bool isObscured;
 
   /**
    * RegEx pattern for the input password
@@ -146,13 +150,13 @@ class PasswordFieldState extends State<PasswordField> {
 
   void inContact(TapDownDetails details) {
     setState(() {
-      obscureText = false;
+      widget.isObscured = false;
     });
   }
 
   void outContact(TapUpDetails details) {
     setState(() {
-      obscureText = true;
+      widget.isObscured = true;
     });
   }
 
@@ -175,7 +179,7 @@ class PasswordFieldState extends State<PasswordField> {
             child: TextField(
               maxLength: widget.maxLength,
               controller: widget.controller,
-              obscureText: obscureText,
+              obscureText: widget.isObscured,
               autofocus: widget.autoFocus,
               decoration: InputDecoration(
                   contentPadding: const EdgeInsets.symmetric(
