@@ -29,7 +29,6 @@ class PasswordField extends StatefulWidget {
     this.suffixIcon,
     this.pattern,
     this.suffixIconEnabled = true,
-    this.suffixFunction,
     this.isObscured = true,
   }) : assert((backgroundColor == null && backgroundBorderRadius == null) ||
             (backgroundColor != null && backgroundBorderRadius != null));
@@ -63,9 +62,6 @@ class PasswordField extends StatefulWidget {
 
   /// A controller for an editable passwordfield.
   final TextEditingController controller;
-
-  /// to set a onTap method to the suffix button
-  final Function suffixFunction;
 
   /// to set obscurity to the text
   bool isObscured;
@@ -133,7 +129,7 @@ class PasswordField extends StatefulWidget {
   final Function onChanged;
 
   /// Icon used to unhide the password when touch in Contact with the icon
-  final Icon suffixIcon;
+  final Widget suffixIcon;
 
   /// The Icon to show at the right end of the textfield, suffix Icon can be removed by setting suffixIconEnabled to false,defaults to true
   final bool suffixIconEnabled;
@@ -211,8 +207,8 @@ class PasswordFieldState extends State<PasswordField> {
                       ? GestureDetector(
                           child:
                               widget.suffixIcon ?? Icon(Icons.remove_red_eye),
-                          onTapDown: widget.suffixFunction ?? inContact,
-                          onTapUp: widget.suffixFunction ?? outContact,
+                          onTapDown: inContact,
+                          onTapUp: outContact,
                         )
                       : null),
               onSubmitted: widget.onSubmit,
