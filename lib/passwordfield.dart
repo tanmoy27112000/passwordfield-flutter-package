@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:passwordfield/password_bloc.dart';
 
 class PasswordField extends StatefulWidget {
-  const PasswordField({
+  PasswordField({
     this.autoFocus = false,
     this.border,
     this.focusedBorder,
