@@ -29,6 +29,7 @@ class PasswordField extends StatefulWidget {
     this.suffixIcon,
     this.pattern,
     this.suffixIconEnabled = true,
+    this.isEnabled = true,
     this.isObscured = true,
   }) : assert((backgroundColor == null && backgroundBorderRadius == null) ||
             (backgroundColor != null && backgroundBorderRadius != null));
@@ -134,6 +135,8 @@ class PasswordField extends StatefulWidget {
   /// The Icon to show at the right end of the textfield, suffix Icon can be removed by setting suffixIconEnabled to false,defaults to true
   final bool suffixIconEnabled;
 
+  final bool isEnabled;
+
   @override
   State createState() {
     return PasswordFieldState();
@@ -176,6 +179,7 @@ class PasswordFieldState extends State<PasswordField> {
               maxLength: widget.maxLength,
               controller: widget.controller,
               obscureText: widget.isObscured,
+              enabled: widget.isEnabled,
               autofocus: widget.autoFocus,
               decoration: InputDecoration(
                   contentPadding: const EdgeInsets.symmetric(
