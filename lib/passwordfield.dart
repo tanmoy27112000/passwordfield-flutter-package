@@ -31,6 +31,7 @@ class PasswordField extends StatefulWidget {
     this.suffixIconEnabled = true,
     this.isEnabled = true,
     this.isObscured = true,
+    this.keyboardType = TextInputType.name,
   }) : assert((backgroundColor == null && backgroundBorderRadius == null) ||
             (backgroundColor != null && backgroundBorderRadius != null));
   // assert((hasFloatingPlaceholder == true && hintText == null) ||
@@ -137,6 +138,8 @@ class PasswordField extends StatefulWidget {
 
   final bool isEnabled;
 
+  final TextInputType keyboardType;
+
   @override
   State createState() {
     return PasswordFieldState();
@@ -178,6 +181,7 @@ class PasswordFieldState extends State<PasswordField> {
             child: TextField(
               maxLength: widget.maxLength,
               controller: widget.controller,
+              keyboardType: widget.keyboardType,
               obscureText: widget.isObscured,
               enabled: widget.isEnabled,
               autofocus: widget.autoFocus,
