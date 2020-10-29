@@ -25,6 +25,7 @@ class PasswordField extends StatefulWidget {
       this.errorStyle,
       @deprecated this.onChanged,
       this.errorFocusedBorder,
+      this.isObscured,
       this.errorMessage,
       this.suffixIcon,
       this.pattern,
@@ -61,6 +62,8 @@ class PasswordField extends StatefulWidget {
 
   /// A controller for an editable passwordfield.
   final TextEditingController controller;
+
+  final isObscured;
 
   /**
    * RegEx pattern for the input password
@@ -171,7 +174,7 @@ class PasswordFieldState extends State<PasswordField> {
             child: TextField(
               maxLength: widget.maxLength,
               controller: widget.controller,
-              obscureText: obscureText,
+              obscureText: widget.isObscured ?? obscureText,
               autofocus: widget.autoFocus,
               decoration: InputDecoration(
                   border: widget.backgroundColor != null
