@@ -214,12 +214,12 @@ class PasswordFieldState extends State<PasswordField> {
                   suffixIcon: widget.suffixIconEnabled
                       ? GestureDetector(
                           child: widget.suffixIcon == null
-                              ? obscureText
+                              ? widget.isObscured
                                   ? Icon(Icons.remove_red_eye)
                                   : Icon(Icons.close)
                               : widget.suffixIcon,
                           onTap: () {
-                            if (obscureText) {
+                            if (widget.isObscured) {
                               inContact(null);
                             } else {
                               outContact(null);
