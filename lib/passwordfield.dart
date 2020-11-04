@@ -220,9 +220,9 @@ class PasswordFieldState extends State<PasswordField> {
                               : widget.suffixIcon,
                           onTap: () {
                             if (obscureText) {
-                              outContact(null);
-                            } else {
                               inContact(null);
+                            } else {
+                              outContact(null);
                             }
                           },
                           // onTapUp: outContact,
