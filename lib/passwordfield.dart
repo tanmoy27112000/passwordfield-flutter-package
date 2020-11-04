@@ -218,8 +218,13 @@ class PasswordFieldState extends State<PasswordField> {
                                   ? Icon(Icons.remove_red_eye)
                                   : Icon(Icons.close)
                               : widget.suffixIcon,
-                          onTap: () =>
-                              obscureText ? outContact(null) : inContact(null),
+                          onTap: () {
+                            if (obscureText) {
+                              outContact(null);
+                            } else {
+                              inContact(null);
+                            }
+                          },
                           // onTapUp: outContact,
                         )
                       : null),
