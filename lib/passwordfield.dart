@@ -213,9 +213,11 @@ class PasswordFieldState extends State<PasswordField> {
                   labelStyle: widget.inputStyle,
                   suffixIcon: widget.suffixIconEnabled
                       ? GestureDetector(
-                          child: widget.suffixIcon ?? obscureText
-                              ? Icon(Icons.remove_red_eye)
-                              : Icon(Icons.close),
+                          child: widget.suffixIcon == null
+                              ? obscureText
+                                  ? Icon(Icons.remove_red_eye)
+                                  : Icon(Icons.close)
+                              : widget.suffixIcon,
                           onTap: () => obscureText ? outContact : inContact,
                           // onTapUp: outContact,
                         )
