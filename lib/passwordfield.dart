@@ -30,11 +30,15 @@ class PasswordField extends StatefulWidget {
       this.suffixIcon,
       this.pattern,
       this.fieldKey,
+      this.validator,
+      this.keyboardType,
       this.suffixIconEnabled = true})
       : assert((backgroundColor == null && backgroundBorderRadius == null) ||
             (backgroundColor != null && backgroundBorderRadius != null));
   // assert((hasFloatingPlaceholder == true && hintText == null) ||
   //     (hasFloatingPlaceholder == false && hintText != null));
+
+  final Function validator;
 
   /// key for the textFormField
   final Key fieldKey;
@@ -48,6 +52,8 @@ class PasswordField extends StatefulWidget {
 
   /// changes the primary color of the PasswordField
   final Color color;
+
+  final TextInputType keyboardType;
 
   /// Background Color for the textfield must be specified with [backgroundBorderRadius]
   final Color backgroundColor;
@@ -181,6 +187,9 @@ class PasswordFieldState extends State<PasswordField> {
               controller: widget.controller,
               obscureText: widget.isObscured ?? obscureText,
               autofocus: widget.autoFocus,
+              keyboardType: widget.keyboardType ?? TextInputType.text,
+              // ignore: missing_return
+              validator: widget.validator ?? (val) {},
               decoration: InputDecoration(
                   border: widget.backgroundColor != null
                       ? InputBorder.none
