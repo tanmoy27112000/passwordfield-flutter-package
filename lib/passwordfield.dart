@@ -18,7 +18,7 @@ class PasswordField extends StatefulWidget {
       this.floatingText,
       this.maxLength,
       this.errorMaxLines,
-      this.onSubmit,
+      // this.onSubmit,
       this.backgroundColor,
       this.backgroundBorderRadius,
       this.textPadding,
@@ -29,11 +29,15 @@ class PasswordField extends StatefulWidget {
       this.errorMessage,
       this.suffixIcon,
       this.pattern,
+      this.fieldKey,
       this.suffixIconEnabled = true})
       : assert((backgroundColor == null && backgroundBorderRadius == null) ||
             (backgroundColor != null && backgroundBorderRadius != null));
   // assert((hasFloatingPlaceholder == true && hintText == null) ||
   //     (hasFloatingPlaceholder == false && hintText != null));
+
+  /// key for the textFormField
+  final Key fieldKey;
 
   /// if autofocus is true keyboard pops up as soon as the widget is rendered on screen
   /// defaults to false
@@ -120,7 +124,7 @@ class PasswordField extends StatefulWidget {
   final int maxLength;
 
   /// function triggerred when the submit button on keyboard is pressed
-  final Function(String) onSubmit;
+  // final Function(String) onSubmit;
 
   /// A Callback function triggered when the text insude the PasswordField changes
   ///
@@ -171,7 +175,8 @@ class PasswordFieldState extends State<PasswordField> {
                     color: widget.backgroundColor,
                     borderRadius: widget.backgroundBorderRadius)
                 : null,
-            child: TextField(
+            child: TextFormField(
+              key: widget.fieldKey,
               maxLength: widget.maxLength,
               controller: widget.controller,
               obscureText: widget.isObscured ?? obscureText,
@@ -206,7 +211,7 @@ class PasswordFieldState extends State<PasswordField> {
                           onTapUp: outContact,
                         )
                       : null),
-              onSubmitted: widget.onSubmit,
+              // onSubmitted: widget.onSubmit,
               style: widget.inputStyle,
               onChanged: (text) =>
                   bloc.onPasswordChanged(widget.pattern ?? '.*', text),
