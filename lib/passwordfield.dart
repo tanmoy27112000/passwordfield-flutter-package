@@ -32,6 +32,7 @@ class PasswordField extends StatefulWidget {
     this.isEnabled = true,
     this.isObscured = true,
     this.keyboardType = TextInputType.name,
+    this.fieldKey,
   }) : assert((backgroundColor == null && backgroundBorderRadius == null) ||
             (backgroundColor != null && backgroundBorderRadius != null));
   // assert((hasFloatingPlaceholder == true && hintText == null) ||
@@ -67,6 +68,9 @@ class PasswordField extends StatefulWidget {
 
   /// to set obscurity to the text
   bool isObscured;
+
+  /// key for the textFormField
+  Key fieldKey;
 
   /**
    * RegEx pattern for the input password
@@ -178,7 +182,8 @@ class PasswordFieldState extends State<PasswordField> {
                     color: widget.backgroundColor,
                     borderRadius: widget.backgroundBorderRadius)
                 : null,
-            child: TextField(
+            child: TextFormField(
+              key: widget.fieldKey,
               maxLength: widget.maxLength,
               controller: widget.controller,
               keyboardType: widget.keyboardType,
@@ -228,7 +233,7 @@ class PasswordFieldState extends State<PasswordField> {
                           // onTapUp: outContact,
                         )
                       : null),
-              onSubmitted: widget.onSubmit,
+              // onSubmitted: widget.onSubmit,
               style: widget.inputStyle,
               onChanged: (text) =>
                   bloc.onPasswordChanged(widget.pattern ?? '.*', text),
