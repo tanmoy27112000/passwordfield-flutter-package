@@ -189,7 +189,7 @@ class PasswordFieldState extends State<PasswordField> {
               enabled: widget.isEnabled,
               autofocus: widget.autoFocus,
               decoration: InputDecoration(
-                  prefixIcon: widget.prefixWidget ?? const SizedBox.shrink(),
+                  prefixIcon: widget.prefixWidget ?? SizedBox.shrink(),
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16.0,
                     vertical: 16.0,
