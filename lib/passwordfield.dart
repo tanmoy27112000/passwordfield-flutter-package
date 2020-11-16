@@ -24,6 +24,7 @@ class PasswordField extends StatefulWidget {
     this.textPadding,
     this.errorStyle,
     @deprecated this.onChanged,
+    this.suffixWidget,
     this.errorFocusedBorder,
     this.errorMessage,
     this.suffixIcon,
@@ -40,6 +41,8 @@ class PasswordField extends StatefulWidget {
   /// if autofocus is true keyboard pops up as soon as the widget is rendered on screen
   /// defaults to false
   final bool autoFocus;
+
+  final Widget suffixWidget;
 
   /// Input Border for the password field when not in focus
   final InputBorder border;
@@ -186,6 +189,7 @@ class PasswordFieldState extends State<PasswordField> {
               enabled: widget.isEnabled,
               autofocus: widget.autoFocus,
               decoration: InputDecoration(
+                  suffix: widget.suffixWidget,
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16.0,
                     vertical: 16.0,
