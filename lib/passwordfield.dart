@@ -32,7 +32,7 @@ class PasswordField extends StatefulWidget {
     this.suffixIconEnabled = true,
     this.isEnabled = true,
     this.isObscured = true,
-    this.keyboardType = TextInputType.name,
+    this.keyboardType = TextInputType.emailAddress,
   }) : assert((backgroundColor == null && backgroundBorderRadius == null) ||
             (backgroundColor != null && backgroundBorderRadius != null));
   // assert((hasFloatingPlaceholder == true && hintText == null) ||
