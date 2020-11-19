@@ -222,6 +222,7 @@ class PasswordFieldState extends State<PasswordField> {
                                   width:
                                       MediaQuery.of(context).size.width * 0.2,
                                   child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       widget.isObscured
                                           ? Icon(Icons.remove_red_eye)
