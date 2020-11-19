@@ -226,11 +226,11 @@ class PasswordFieldState extends State<PasswordField> {
                                       widget.isObscured
                                           ? Icon(Icons.remove_red_eye)
                                           : Icon(Icons.remove_red_eye_outlined),
-                                      IconButton(
-                                          icon: Icon(Icons.close),
-                                          onPressed: () {
+                                      InkWell(
+                                          onTap: () {
                                             widget.controller.clear();
-                                          })
+                                          },
+                                          child: Icon(Icons.close)),
                                     ],
                                   ),
                                 )
