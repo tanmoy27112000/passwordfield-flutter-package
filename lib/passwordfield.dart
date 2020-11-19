@@ -218,9 +218,22 @@ class PasswordFieldState extends State<PasswordField> {
                   suffixIcon: widget.suffixIconEnabled
                       ? GestureDetector(
                           child: widget.suffixIcon == null
-                              ? widget.isObscured
-                                  ? Icon(Icons.remove_red_eye)
-                                  : Icon(Icons.close)
+                              ? Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.2,
+                                  child: Row(
+                                    children: [
+                                      widget.isObscured
+                                          ? Icon(Icons.remove_red_eye)
+                                          : Icon(Icons.remove_red_eye_outlined),
+                                      IconButton(
+                                          icon: Icon(Icons.close),
+                                          onPressed: () {
+                                            widget.controller.clear();
+                                          })
+                                    ],
+                                  ),
+                                )
                               : widget.suffixIcon,
                           onTap: () {
                             if (widget.isObscured) {
