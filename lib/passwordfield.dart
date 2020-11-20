@@ -29,6 +29,8 @@ class PasswordField extends StatefulWidget {
     this.errorMessage,
     this.suffixIcon,
     this.pattern,
+    this.fieldKey,
+    this.validation,
     this.suffixIconEnabled = true,
     this.isEnabled = true,
     this.isObscured = true,
@@ -43,6 +45,10 @@ class PasswordField extends StatefulWidget {
   final bool autoFocus;
 
   final Widget prefixWidget;
+
+  final Key fieldKey;
+
+  final Function validation;
 
   /// Input Border for the password field when not in focus
   final InputBorder border;
@@ -181,7 +187,9 @@ class PasswordFieldState extends State<PasswordField> {
                     color: widget.backgroundColor,
                     borderRadius: widget.backgroundBorderRadius)
                 : null,
-            child: TextField(
+            child: TextFormField(
+              key: widget.fieldKey,
+              validator: widget.validation,
               maxLength: widget.maxLength,
               controller: widget.controller,
               keyboardType: widget.keyboardType,
@@ -189,7 +197,6 @@ class PasswordFieldState extends State<PasswordField> {
               enabled: widget.isEnabled,
               autofocus: widget.autoFocus,
               decoration: InputDecoration(
-                  // prefixIcon: widget.prefixWidget ?? SizedBox.shrink(),
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16.0,
                     vertical: 16.0,
@@ -246,7 +253,7 @@ class PasswordFieldState extends State<PasswordField> {
                           // onTapUp: outContact,
                         )
                       : null),
-              onSubmitted: widget.onSubmit,
+              // onSubmitted: widget.onSubmit,
               style: widget.inputStyle,
               onChanged: (text) =>
                   bloc.onPasswordChanged(widget.pattern ?? '.*', text),
