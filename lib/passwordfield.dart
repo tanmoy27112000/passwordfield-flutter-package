@@ -31,6 +31,7 @@ class PasswordField extends StatefulWidget {
     this.pattern,
     this.fieldKey,
     this.validation,
+    this.onSaved,
     this.suffixIconEnabled = true,
     this.isEnabled = true,
     this.isObscured = true,
@@ -49,6 +50,8 @@ class PasswordField extends StatefulWidget {
   final Key fieldKey;
 
   final Function validation;
+
+  final Function onSaved;
 
   /// Input Border for the password field when not in focus
   final InputBorder border;
@@ -196,6 +199,7 @@ class PasswordFieldState extends State<PasswordField> {
               obscureText: widget.isObscured,
               enabled: widget.isEnabled,
               autofocus: widget.autoFocus,
+              onSaved: widget.onSaved,
               decoration: InputDecoration(
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16.0,
