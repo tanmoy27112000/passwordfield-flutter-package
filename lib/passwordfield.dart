@@ -46,7 +46,7 @@ class PasswordField extends StatefulWidget {
   /// defaults to false
   final bool autoFocus;
 
-  final Text prefixText;
+  final String prefixText;
 
   final Widget prefixWidget;
 
