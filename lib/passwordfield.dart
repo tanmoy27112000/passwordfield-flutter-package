@@ -32,6 +32,7 @@ class PasswordField extends StatefulWidget {
     this.fieldKey,
     this.validation,
     this.onSaved,
+    this.prefixText,
     this.suffixIconEnabled = true,
     this.isEnabled = true,
     this.isObscured = true,
@@ -44,6 +45,8 @@ class PasswordField extends StatefulWidget {
   /// if autofocus is true keyboard pops up as soon as the widget is rendered on screen
   /// defaults to false
   final bool autoFocus;
+
+  final Text prefixText;
 
   final Widget prefixWidget;
 
@@ -201,6 +204,7 @@ class PasswordFieldState extends State<PasswordField> {
               autofocus: widget.autoFocus,
               onSaved: widget.onSaved,
               decoration: InputDecoration(
+                  prefixText: widget.prefixText ?? "",
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16.0,
                     vertical: 16.0,
