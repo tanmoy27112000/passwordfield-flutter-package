@@ -263,8 +263,9 @@ class PasswordFieldState extends State<PasswordField> {
                       : null),
               // onSubmitted: widget.onSubmit,
               style: widget.inputStyle,
-              onChanged: (text) =>
-                  bloc.onPasswordChanged(widget.pattern ?? '.*', text),
+              // onChanged: (text) =>
+              //     bloc.onPasswordChanged(widget.pattern ?? '.*', text),
+              onChanged: widget.onChanged,
             ),
           );
         },
