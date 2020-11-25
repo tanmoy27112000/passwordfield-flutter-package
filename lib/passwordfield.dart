@@ -187,7 +187,6 @@ class PasswordFieldState extends State<PasswordField> {
         stream: bloc.password,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
-            height: MediaQuery.of(context).size.height * 0.07,
             padding: widget.backgroundColor != null ? widget.textPadding : null,
             decoration: widget.backgroundColor != null
                 ? BoxDecoration(
