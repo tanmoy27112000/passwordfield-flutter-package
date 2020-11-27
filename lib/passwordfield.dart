@@ -190,7 +190,7 @@ class PasswordFieldState extends State<PasswordField> {
               autofocus: widget.autoFocus,
               decoration: InputDecoration(
                   // prefixIcon: widget.prefixWidget ?? SizedBox.shrink(),
-                  
+
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16.0,
                     vertical: 16.0,
@@ -226,13 +226,16 @@ class PasswordFieldState extends State<PasswordField> {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       widget.isObscured
-                                          ? Icon(Icons.remove_red_eye,
-                                              color: Colors.white)
-                                          : Icon(Icons.remove_red_eye_outlined,
-                                              color: Colors.white),
+                                          ? Icon(
+                                              Icons.remove_red_eye,
+                                            )
+                                          : Icon(
+                                              Icons.remove_red_eye_outlined,
+                                            ),
                                       IconButton(
-                                          icon: Icon(Icons.close,
-                                              color: Colors.white),
+                                          icon: Icon(
+                                            Icons.close,
+                                          ),
                                           onPressed: () {
                                             widget.controller.clear();
                                           })
