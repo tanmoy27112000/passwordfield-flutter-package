@@ -493,7 +493,7 @@ class PasswordFieldNoErrorState extends State<PasswordFieldNoError> {
                   //     ? widget.errorMessage ?? snapshot.error
                   //     : null,
                   errorMaxLines: widget.errorMaxLines,
-                  errorStyle: widget.errorStyle,
+                  errorStyle: TextStyle(height: 0),
                   enabledBorder: widget.border,
                   focusedBorder: widget.focusedBorder,
                   hintText: widget.hintText,
