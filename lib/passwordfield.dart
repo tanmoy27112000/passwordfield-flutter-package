@@ -306,6 +306,10 @@ class PasswordFieldNoError extends StatefulWidget {
     this.errorMessage,
     this.suffixIcon,
     this.pattern,
+    this.fieldKey,
+    this.validation,
+    this.onSaved,
+    this.prefixText,
     this.suffixIconEnabled = true,
     this.isEnabled = true,
     this.isObscured = true,
@@ -319,7 +323,15 @@ class PasswordFieldNoError extends StatefulWidget {
   /// defaults to false
   final bool autoFocus;
 
+  final String prefixText;
+
   final Widget prefixWidget;
+
+  final Key fieldKey;
+
+  final Function validation;
+
+  final Function onSaved;
 
   /// Input Border for the password field when not in focus
   final InputBorder border;
@@ -458,16 +470,18 @@ class PasswordFieldNoErrorState extends State<PasswordFieldNoError> {
                     color: widget.backgroundColor,
                     borderRadius: widget.backgroundBorderRadius)
                 : null,
-            child: TextField(
+            child: TextFormField(
+              key: widget.fieldKey,
+              validator: widget.validation,
               maxLength: widget.maxLength,
               controller: widget.controller,
               keyboardType: widget.keyboardType,
               obscureText: widget.isObscured,
               enabled: widget.isEnabled,
               autofocus: widget.autoFocus,
+              onSaved: widget.onSaved,
               decoration: InputDecoration(
-                  // prefixIcon: widget.prefixWidget ?? SizedBox.shrink(),
-
+                  prefixText: widget.prefixText ?? "",
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16.0,
                     vertical: 16.0,
@@ -503,16 +517,10 @@ class PasswordFieldNoErrorState extends State<PasswordFieldNoError> {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       widget.isObscured
-                                          ? Icon(
-                                              Icons.remove_red_eye,
-                                            )
-                                          : Icon(
-                                              Icons.remove_red_eye_outlined,
-                                            ),
+                                          ? Icon(Icons.remove_red_eye)
+                                          : Icon(Icons.remove_red_eye_outlined),
                                       IconButton(
-                                          icon: Icon(
-                                            Icons.close,
-                                          ),
+                                          icon: Icon(Icons.close),
                                           onPressed: () {
                                             widget.controller.clear();
                                           })
@@ -530,10 +538,13 @@ class PasswordFieldNoErrorState extends State<PasswordFieldNoError> {
                           // onTapUp: outContact,
                         )
                       : null),
-              onSubmitted: widget.onSubmit,
+              // onSubmitted: widget.onSubmit,
               style: widget.inputStyle,
-              onChanged: (text) =>
-                  bloc.onPasswordChanged(widget.pattern ?? '.*', text),
+              // onChanged: (text) =>
+              //     bloc.onPasswordChanged(widget.pattern ?? '.*', text),
+              onChanged: (val) {
+                widget.onChanged(val);
+              },
             ),
           );
         },
