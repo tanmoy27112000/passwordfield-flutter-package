@@ -6,6 +6,7 @@ import 'package:passwordfield/password_bloc.dart';
 
 class PasswordField extends StatefulWidget {
   PasswordField({
+    this.textAlign,
     this.autoFocus = false,
     this.border,
     this.focusedBorder,
@@ -155,6 +156,8 @@ class PasswordField extends StatefulWidget {
 
   final TextInputType keyboardType;
 
+  final TextAlign textAlign;
+
   @override
   State createState() {
     return PasswordFieldState();
@@ -194,6 +197,7 @@ class PasswordFieldState extends State<PasswordField> {
                     borderRadius: widget.backgroundBorderRadius)
                 : null,
             child: TextFormField(
+              textAlign: widget.textAlign ?? TextAlign.left,
               key: widget.fieldKey,
               validator: widget.validation,
               maxLength: widget.maxLength,
