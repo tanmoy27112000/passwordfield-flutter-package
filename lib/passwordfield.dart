@@ -194,7 +194,8 @@ class PasswordFieldState extends State<PasswordField> {
             decoration: widget.backgroundColor != null
                 ? BoxDecoration(
                     color: widget.backgroundColor,
-                    borderRadius: widget.backgroundBorderRadius)
+                    borderRadius: widget.backgroundBorderRadius,
+                  )
                 : null,
             child: TextFormField(
               textAlign: widget.textAlign ?? TextAlign.left,
